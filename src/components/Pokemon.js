@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const PokemonWrapper = styled.div`
   height: 500px;
@@ -40,11 +41,11 @@ const Pokemon = ({ pokemon }) => {
       <FavoriteIcon>
         <i className="fas fa-star"></i>
       </FavoriteIcon>
-      <a href="#">
+      <Link to={`/pokemon/${pokemon.name}`}>
         <ImageWrapper>
           <Image src={pokemon.img} />
         </ImageWrapper>
-      </a>
+      </Link>
       <Name>{pokemon.name}</Name>
     </PokemonWrapper>
   );
