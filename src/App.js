@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { GlobalStyles } from './Global';
 import SearchPage from './pages/SearchPage';
 import PokemonPage from './pages/PokemonPage';
+import FavoritesPage from './pages/FavoritesPage';
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<SearchPage />} />
           <Route path="/pokemon/:name" element={<PokemonPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
       </Container>
     </BrowserRouter>
