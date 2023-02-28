@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Pokemon from '../components/Pokemon';
 import data from '../pokemonData';
+import Logo from '../components/Logo.styled';
 
 const SearchResultsWrapper = styled.div`
   display: flex;
@@ -23,14 +24,17 @@ const SearchPage = () => {
   const pokemon = data;
 
   return (
-    <SearchResultsWrapper>
-      <h2>Search Results</h2>
-      <SearchResults>
-        {pokemon.map(pokemon => {
-          return <Pokemon key={pokemon.id} pokemon={pokemon} />;
-        })}
-      </SearchResults>
-    </SearchResultsWrapper>
+    <>
+      <Logo to="/">Pokedexelus</Logo>
+      <SearchResultsWrapper>
+        <h2>Search Results</h2>
+        <SearchResults>
+          {pokemon.map(pokemon => {
+            return <Pokemon key={pokemon.id} pokemon={pokemon} />;
+          })}
+        </SearchResults>
+      </SearchResultsWrapper>
+    </>
   );
 };
 
