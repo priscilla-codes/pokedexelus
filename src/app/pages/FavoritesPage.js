@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Pokemon from '../components/Pokemon';
-import data from '../pokemonData';
+import data from '../../pokemonData';
 
 const Wrapper = styled.div`
   display: flex;

@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Custom
 import { GlobalStyles } from './Global';
-import SearchPage from './pages/SearchPage';
-import PokemonPage from './pages/PokemonPage';
-import FavoritesPage from './pages/FavoritesPage';
-import HomePage from './pages/HomePage';
+import SearchPage from './app/pages/SearchPage';
+import PokemonPage from './app/pages/PokemonPage';
+import FavoritesPage from './app/pages/FavoritesPage';
+import HomePage from './app/pages/HomePage';
 
 const Container = styled.div`
   display: flex;
