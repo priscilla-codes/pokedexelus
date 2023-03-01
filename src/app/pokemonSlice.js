@@ -10,6 +10,11 @@ const initialState = {
 };
 
 function loadFromLocalStorage() {
+  const pokemonCache = localStorage.getItem('pokemon.cache');
+  if (pokemonCache) {
+    initialState.cache = JSON.parse(pokemonCache);
+  }
+
   const pokemonFavorites = localStorage.getItem('pokemon.favorites');
   if (pokemonFavorites) {
     initialState.favorites = JSON.parse(pokemonFavorites);
@@ -18,7 +23,11 @@ function loadFromLocalStorage() {
   return initialState;
 }
 
-function saveToLocalStorage(favorites) {
+function saveToLocalStorage(cache, favorites) {
+  if (cache) {
+    localStorage.setItem('pokemon.cache', JSON.stringify(cache));
+  }
+
   if (favorites) {
     localStorage.setItem('pokemon.favorites', JSON.stringify(favorites));
   }
@@ -34,7 +43,7 @@ export const pokemonSlice = createSlice({
         return;
       }
       state.favorites.push(name);
-      saveToLocalStorage(state.favorites);
+      saveToLocalStorage(undefined, state.favorites);
     },
     unfavorite: (state, action) => {
       const name = action.payload.name;
@@ -44,7 +53,7 @@ export const pokemonSlice = createSlice({
         state.favorites.splice(index, 1);
       }
 
-      saveToLocalStorage(state.favorites);
+      saveToLocalStorage(undefined, state.favorites);
     }
   },
   extraReducers: builder => {}
