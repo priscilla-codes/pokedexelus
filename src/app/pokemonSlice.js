@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import data from '../pokemon.json';
 
 const initialState = {
@@ -21,6 +22,40 @@ function loadFromLocalStorage() {
   }
 
   return initialState;
+}
+
+export const searchAsync = createAsyncThunk(
+  'pokemon/search',
+  async (query, thunkAPI) => {
+    const globalState = thunkAPI.getState();
+    const matchingPokemon = globalState.pokemon.pokemonList.filter(
+      ({ name }) => {
+        return name.includes(query);
+      }
+    );
+    const notCached = matchingPokemon.filter(({ name }) => {
+      return !globalState.pokemon.cache[name];
+    });
+
+    const responses = await download(notCached);
+    const byName = responses.reduce((data, response, i) => {
+      const name = notCached[i].name;
+      return { ...data, [name]: response.data };
+    }, {});
+    return { byName, matchingPokemon };
+  }
+);
+
+function download(pokemonList) {
+  const requests = pokemonList.map(({ url }) => {
+    const downloadRequest = axios({
+      method: 'get',
+      url: url
+    });
+    return downloadRequest;
+  });
+
+  return Promise.all(requests);
 }
 
 function saveToLocalStorage(cache, favorites) {
@@ -56,7 +91,20 @@ export const pokemonSlice = createSlice({
       saveToLocalStorage(undefined, state.favorites);
     }
   },
-  extraReducers: builder => {}
+  extraReducers: builder => {
+    builder
+      .addCase(searchAsync.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(searchAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.cache = { ...state.cache, ...action.payload.byName };
+        saveToLocalStorage(state.cache);
+        state.searchResults = action.payload.matchingPokemon.map(({ name }) => {
+          return state.cache[name];
+        });
+      });
+  }
 });
 
 export default pokemonSlice.reducer;
