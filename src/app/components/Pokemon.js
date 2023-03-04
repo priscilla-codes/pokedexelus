@@ -8,7 +8,8 @@ const PokemonWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   flex-basis: 20%;
-  background-color: #f3f3f4;
+  box-shadow: rgb(0 0 0 / 4%) 0px 6px 12px 4px, rgb(0 0 0 / 4%) 0px 4px 10px 2px,
+    rgb(0 0 0 / 6%) 0px 2px 8px, rgb(0 0 0 / 4%) 0px 2px 4px;
   margin-right: 2rem;
   margin-bottom: 2rem;
 `;
