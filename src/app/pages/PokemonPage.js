@@ -1,19 +1,25 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { getPokemonByName } from '../pokemonSlice';
+import Logo from '../components/Logo.styled';
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: 5rem;
 `;
 const Details = styled.div`
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 50rem;
+  height: 500px;
 `;
 
 const Image = styled.img`
   object-fit: cover;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 `;
 
 const DetailsRight = styled.div`
@@ -21,19 +27,17 @@ const DetailsRight = styled.div`
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   background-color: #638eef;
-  height: 500px;
   align-self: flex-end;
   color: #fff;
+  height: 100%;
 `;
 
 const DetailsLeft = styled.div`
-  height: 500px;
   width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
-  margin-top: 1rem;
 `;
 
 const DetailsLeftWrapper = styled.div``;
@@ -43,30 +47,40 @@ const Header = styled.h2`
   justify-content: center;
   text-transform: capitalize;
   font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
 `;
 
 const PokemonDetail = styled.span`
   display: block;
+  padding: 1rem 0.5rem;
   margin-bottom: 0.63rem;
 `;
 
 const PokemonPage = () => {
+  const { name } = useParams();
+  const dispatch = useDispatch();
+  const pokemon = useSelector(getPokemonByName(name));
+  const pokemonImg =
+    pokemon.sprites.other['official-artwork'].front_default ||
+    pokemon.sprites.front_default;
   return (
-    <Wrapper>
-      <Details>
-        <DetailsLeftWrapper>
-          <Header>Pikachu</Header>
+    <>
+      <Logo to="/">Pokedexelus</Logo>
+      <Wrapper>
+        <Header>{pokemon.name}</Header>
+        <Details>
           <DetailsLeft>
-            <Image src="../../images/pikachu.png" />
+            <Image src={pokemonImg} />
           </DetailsLeft>
-        </DetailsLeftWrapper>
-        <DetailsRight>
-          <PokemonDetail>Height:4</PokemonDetail>
-          <PokemonDetail>Weight: 60</PokemonDetail>
-          <PokemonDetail>Experience: 112</PokemonDetail>
-        </DetailsRight>
-      </Details>
-    </Wrapper>
+          <DetailsRight>
+            <PokemonDetail>Height: {pokemon.height}</PokemonDetail>
+            <PokemonDetail>Weight: {pokemon.weight}</PokemonDetail>
+            <PokemonDetail>Experience: {pokemon.base_experience}</PokemonDetail>
+          </DetailsRight>
+        </Details>
+      </Wrapper>
+    </>
   );
 };
 

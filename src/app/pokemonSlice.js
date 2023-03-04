@@ -110,4 +110,8 @@ export const pokemonSlice = createSlice({
 export const selectSearchResults = state => {
   return state.pokemon.searchResults;
 };
+
+export const getPokemonByName = name => state => {
+  return state.pokemon.cache[name];
+};
 export default pokemonSlice.reducer;
