@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Logo = styled(Link)`
+export const Logo = styled(Link)`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 1rem;
   font-size: ${props => (props.logo === 'home' ? '3.2rem' : '2rem')};
   text-decoration: none;
   color: #000;
 `;
 
-export default Logo;
+export const LogoImage = styled.img`
+  width: ${props => (props.logoImage === 'home' ? '6rem' : '2rem')};
+  height: ${props => (props.logoImage === 'home' ? '6rem' : '2rem')};
+  object-fit: cover;
+`;

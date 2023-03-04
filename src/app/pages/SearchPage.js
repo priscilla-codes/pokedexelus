@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { selectSearchResults, searchAsync } from '../pokemonSlice';
 import styled from 'styled-components';
 import Pokemon from '../components/Pokemon';
-import Logo from '../components/Logo.styled';
+import { Logo, LogoImage } from '../components/Logo.styled';
 
 const SearchResultsWrapper = styled.div`
   display: flex;
@@ -46,6 +46,7 @@ const SearchPage = () => {
   const searchResults = useSelector(selectSearchResults);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
+  const logoImage = '/images/pokemon-logo.png';
 
   const handleOnChange = e => {
     setQuery(e.target.value);
@@ -63,7 +64,10 @@ const SearchPage = () => {
 
   return (
     <>
-      <Logo to="/">Pokedexelus</Logo>
+      <Logo to="/">
+        <LogoImage src={logoImage} />
+        <span>Pokedexelus</span>
+      </Logo>
       <Form onSubmit={handleSubmit}>
         <i class="fal fa-search"></i>
         <Input

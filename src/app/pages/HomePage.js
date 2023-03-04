@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Logo from '../components/Logo.styled';
+import { Logo, LogoImage } from '../components/Logo.styled';
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,6 +30,7 @@ const Input = styled.input`
 const HomePage = () => {
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
+  const logoImage = './images/pokemon-logo.png';
 
   const submitHandler = e => {
     e.preventDefault();
@@ -43,7 +44,8 @@ const HomePage = () => {
   return (
     <Wrapper>
       <Logo to="/" logo="home">
-        Pokedexelus
+        <LogoImage src={logoImage} logoImage="home" />
+        <span>Pokedexelus</span>
       </Logo>
       <Form onSubmit={submitHandler}>
         <i class="fal fa-search"></i>

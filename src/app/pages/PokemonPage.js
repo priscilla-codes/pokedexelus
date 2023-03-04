@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getPokemonByName } from '../pokemonSlice';
-import Logo from '../components/Logo.styled';
+import { Logo, LogoImage } from '../components/Logo.styled';
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,9 +64,13 @@ const PokemonPage = () => {
   const pokemonImg =
     pokemon.sprites.other['official-artwork'].front_default ||
     pokemon.sprites.front_default;
+  const logoImage = '/images/pokemon-logo.png';
   return (
     <>
-      <Logo to="/">Pokedexelus</Logo>
+      <Logo to="/">
+        <LogoImage src={logoImage} />
+        <span>Pokedexelus</span>
+      </Logo>
       <Wrapper>
         <Header>{pokemon.name}</Header>
         <Details>
