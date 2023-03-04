@@ -8,7 +8,7 @@ const PokemonWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   flex-basis: 20%;
-  background-color: #f9f9f9;
+  background-color: #f3f3f4;
   margin-right: 2rem;
   margin-bottom: 2rem;
 `;
@@ -36,6 +36,9 @@ const FavoriteIcon = styled.div`
 `;
 
 const Pokemon = ({ pokemon }) => {
+  const pokemonImg =
+    pokemon.sprites.other['official-artwork'].front_default ||
+    pokemon.sprites.front_default;
   return (
     <PokemonWrapper>
       <FavoriteIcon>
@@ -43,7 +46,7 @@ const Pokemon = ({ pokemon }) => {
       </FavoriteIcon>
       <Link to={`/pokemon/${pokemon.name}`}>
         <ImageWrapper>
-          <Image src={pokemon.img} />
+          <Image src={pokemonImg} />
         </ImageWrapper>
       </Link>
       <Name>{pokemon.name}</Name>

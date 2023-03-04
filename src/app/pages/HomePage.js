@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../components/Logo.styled';
 
@@ -26,14 +28,29 @@ const Input = styled.input`
 `;
 
 const HomePage = () => {
+  const [keyword, setKeyword] = useState('');
+  const navigate = useNavigate();
+
+  const submitHandler = e => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      navigate(`/search/${keyword}`);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <Wrapper>
       <Logo to="/" logo="home">
         Pokedexelus
       </Logo>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <i class="fal fa-search"></i>
-        <Input placeholder="Search Pokemon" />
+        <Input
+          placeholder="Search Pokemon"
+          onChange={e => setKeyword(e.target.value)}
+        />
       </Form>
     </Wrapper>
   );

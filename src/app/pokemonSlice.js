@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import data from '../pokemon.json';
 
@@ -70,7 +70,7 @@ function saveToLocalStorage(cache, favorites) {
 
 export const pokemonSlice = createSlice({
   name: 'pokemon',
-  initialState,
+  initialState: loadFromLocalStorage(),
   reducers: {
     favorite: (state, action) => {
       const name = action.payload.name;
@@ -107,4 +107,7 @@ export const pokemonSlice = createSlice({
   }
 });
 
+export const selectSearchResults = state => {
+  return state.pokemon.searchResults;
+};
 export default pokemonSlice.reducer;

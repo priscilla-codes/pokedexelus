@@ -13,6 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  background-color: white;
 `;
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
       <GlobalStyles />
       <Container>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/search/:keyword" element={<SearchPage />} />
           <Route path="/pokemon/:name" element={<PokemonPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
