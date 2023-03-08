@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { selectFavorites } from '../pokemonSlice';
 import Pokemon from '../components/Pokemon';
-import data from '../../pokemonData';
+import { Logo, LogoImage } from '../components/Logo.styled';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin-top: 2rem;
 `;
 const Header = styled.h2`
   margin-bottom: 2rem;
@@ -13,23 +17,30 @@ const Header = styled.h2`
   font-weight: 600;
 `;
 const Content = styled.div`
-  width: 45%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 `;
 
 const FavoritesPage = () => {
-  const favorites = data;
+  const favorites = useSelector(selectFavorites);
+  const logoImage = './images/pokemon-logo.png';
   return (
-    <Wrapper>
-      <Header>Favorites</Header>
-      <Content>
-        {favorites.map(pokemon => {
-          return <Pokemon pokemon={pokemon} key={pokemon.id} />;
-        })}
-      </Content>
-    </Wrapper>
+    <>
+      <Logo to="/">
+        <LogoImage src={logoImage} />
+        <span>Pokedexelus</span>
+      </Logo>
+      <Wrapper>
+        <Header>Favorites</Header>
+        <Content>
+          {favorites.map(pokemon => {
+            return <Pokemon pokemon={pokemon} key={pokemon.id} />;
+          })}
+        </Content>
+      </Wrapper>
+    </>
   );
 };
 

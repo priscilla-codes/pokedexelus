@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { selectSearchResults, searchAsync } from '../pokemonSlice';
 import styled from 'styled-components';
 import Pokemon from '../components/Pokemon';
@@ -33,12 +33,32 @@ const Form = styled.form`
   border-radius: 25rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 `;
 const Input = styled.input`
   width: 100%;
   padding: 0.8rem;
   outline: none;
   border: 0;
+`;
+
+const FavoritesLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  margin-left: 6rem;
+  color: black;
+  position: absolute;
+  top: 1rem;
+  right: 5%;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  .fas {
+    padding-right: 0.5rem;
+    color: #ed1b24;
+  }
 `;
 
 const SearchPage = () => {
@@ -76,6 +96,10 @@ const SearchPage = () => {
           placeholder="Search Pokemon"
         ></Input>
       </Form>
+      <FavoritesLink to={'/favorites'}>
+        <i class="fas fa-heart"></i>
+        <span>Favorites</span>
+      </FavoritesLink>
       <SearchResultsWrapper>
         {searchResults.length !== 0 && <h2>Search Results</h2>}
         <SearchResults>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getPokemonByName } from '../pokemonSlice';
 import { Logo, LogoImage } from '../components/Logo.styled';
@@ -57,6 +57,25 @@ const PokemonDetail = styled.span`
   margin-bottom: 0.63rem;
 `;
 
+const FavoritesLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  margin-left: 6rem;
+  color: black;
+  position: absolute;
+  top: 1rem;
+  right: 5%;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+
+  .fas {
+    padding-right: 0.5rem;
+    color: #ed1b24;
+  }
+`;
+
 const PokemonPage = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
@@ -71,6 +90,10 @@ const PokemonPage = () => {
         <LogoImage src={logoImage} />
         <span>Pokedexelus</span>
       </Logo>
+      <FavoritesLink to={'/favorites'}>
+        <i class="fas fa-heart"></i>
+        <span>Favorites</span>
+      </FavoritesLink>
       <Wrapper>
         <Header>{pokemon.name}</Header>
         <Details>

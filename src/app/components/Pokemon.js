@@ -1,5 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { favorite, unfavorite, selectFavorites } from '../pokemonSlice';
 import { Link } from 'react-router-dom';
 
 const PokemonWrapper = styled.div`
@@ -34,16 +35,32 @@ const FavoriteIcon = styled.div`
   justify-content: flex-end;
   padding-right: 1rem;
   cursor: pointer;
+
+  .favorited {
+    color: #ffa41c;
+  }
 `;
 
 const Pokemon = ({ pokemon }) => {
+  const favorites = useSelector(selectFavorites);
+  const dispatch = useDispatch();
   const pokemonImg =
     pokemon.sprites.other['official-artwork'].front_default ||
     pokemon.sprites.front_default;
   return (
     <PokemonWrapper>
       <FavoriteIcon>
-        <i className="fas fa-star"></i>
+        {favorites.includes(pokemon) ? (
+          <i
+            className="fas fa-star favorited"
+            onClick={() => dispatch(unfavorite(pokemon))}
+          ></i>
+        ) : (
+          <i
+            className="fas fa-star"
+            onClick={() => dispatch(favorite(pokemon))}
+          ></i>
+        )}
       </FavoriteIcon>
       <Link to={`/pokemon/${pokemon.name}`}>
         <ImageWrapper>

@@ -5,7 +5,7 @@ export const Logo = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-size: ${props => (props.logo === 'home' ? '3.2rem' : '2rem')};
   text-decoration: none;
   color: #000;

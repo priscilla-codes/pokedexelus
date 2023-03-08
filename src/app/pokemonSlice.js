@@ -107,6 +107,14 @@ export const pokemonSlice = createSlice({
   }
 });
 
+export const { favorite, unfavorite } = pokemonSlice.actions;
+
+export const selectFavorites = state => {
+  return state.pokemon.favorites.map(name => {
+    return state.pokemon.cache[name];
+  });
+};
+
 export const selectSearchResults = state => {
   return state.pokemon.searchResults;
 };
@@ -114,4 +122,5 @@ export const selectSearchResults = state => {
 export const getPokemonByName = name => state => {
   return state.pokemon.cache[name];
 };
+
 export default pokemonSlice.reducer;
