@@ -13,12 +13,19 @@ const PokemonWrapper = styled.div`
     rgb(0 0 0 / 6%) 0px 2px 8px, rgb(0 0 0 / 4%) 0px 2px 4px;
   margin-right: 2rem;
   margin-bottom: 2rem;
+  @media (max-width: 52.75em) {
+    margin-right: 0;
+  }
 `;
 
 const Image = styled.img`
   object-fit: cover;
   height: 300px;
   width: 300px;
+  @media (max-width: 52.75em) {
+    height: 375px;
+    width: 375px;
+  }
 `;
 
 const Name = styled.span`
