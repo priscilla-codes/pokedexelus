@@ -36,7 +36,8 @@ const FavoriteIcon = styled.div`
   padding-right: 1rem;
   cursor: pointer;
 
-  .favorited {
+  .favorited,
+  .unfavorited {
     color: #ffa41c;
   }
 `;
@@ -57,7 +58,7 @@ const Pokemon = ({ pokemon }) => {
           ></i>
         ) : (
           <i
-            className="fas fa-star"
+            className="fal fa-star unfavorited"
             onClick={() => dispatch(favorite(pokemon))}
           ></i>
         )}
