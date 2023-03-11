@@ -14,6 +14,9 @@ const Form = styled.form`
   padding-right: 1rem;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
+  @media (max-width: 52.75em) {
+    width: 100%;
+  }
 `;
 
 const Input = styled.input`

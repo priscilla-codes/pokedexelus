@@ -8,6 +8,9 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 15rem;
+  @media (max-width: 52.75em) {
+    width: 100%;
+  }
 `;
 
 const FavoritesLink = styled(Link)`
