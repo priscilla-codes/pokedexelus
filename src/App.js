@@ -13,10 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background-color: #fff;
-  @media (max-width: 52.75em) {
-    padding: 0 1rem;
-  }
+  background-color: white;
 `;
 
 function App() {

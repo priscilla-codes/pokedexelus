@@ -13,6 +13,18 @@ const PokemonWrapper = styled.div`
     rgb(0 0 0 / 6%) 0px 2px 8px, rgb(0 0 0 / 4%) 0px 2px 4px;
   margin-right: 2rem;
   margin-bottom: 2rem;
+  position: relative;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+  }
   @media (max-width: 52.75em) {
     margin-right: 0;
   }
@@ -23,8 +35,8 @@ const Image = styled.img`
   height: 300px;
   width: 300px;
   @media (max-width: 52.75em) {
-    height: 375px;
-    width: 375px;
+    height: 350px;
+    width: 350px;
   }
 `;
 
@@ -40,12 +52,15 @@ const ImageWrapper = styled.div``;
 const FavoriteIcon = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding-right: 1rem;
   cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 
   .favorited,
   .unfavorited {
     color: #ffa41c;
+    padding: 1rem;
   }
 `;
 
@@ -55,27 +70,31 @@ const Pokemon = ({ pokemon }) => {
   const pokemonImg =
     pokemon.sprites.other['official-artwork'].front_default ||
     pokemon.sprites.front_default;
+
+  const handleFavorite = e => {
+    e.preventDefault();
+  };
   return (
     <PokemonWrapper>
-      <FavoriteIcon>
-        {favorites.includes(pokemon) ? (
-          <i
-            className="fas fa-star favorited"
-            onClick={() => dispatch(unfavorite(pokemon))}
-          ></i>
-        ) : (
-          <i
-            className="fal fa-star unfavorited"
-            onClick={() => dispatch(favorite(pokemon))}
-          ></i>
-        )}
-      </FavoriteIcon>
       <Link to={`/pokemon/${pokemon.name}`}>
+        <FavoriteIcon onClick={handleFavorite}>
+          {favorites.includes(pokemon) ? (
+            <i
+              className="fas fa-star favorited"
+              onClick={() => dispatch(unfavorite(pokemon))}
+            ></i>
+          ) : (
+            <i
+              className="fal fa-star unfavorited"
+              onClick={() => dispatch(favorite(pokemon))}
+            ></i>
+          )}
+        </FavoriteIcon>
         <ImageWrapper>
           <Image src={pokemonImg} />
         </ImageWrapper>
+        <Name>{pokemon.name}</Name>
       </Link>
-      <Name>{pokemon.name}</Name>
     </PokemonWrapper>
   );
 };

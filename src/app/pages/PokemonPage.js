@@ -14,12 +14,19 @@ const Details = styled.div`
   justify-content: center;
   width: 50rem;
   height: 500px;
+  @media (max-width: 52.75em) {
+    width: 100%;
+  }
 `;
 
 const Image = styled.img`
   object-fit: cover;
   width: 400px;
   height: 400px;
+  @media (max-width: 52.75em) {
+    width: 375px;
+    height: 375px;
+  }
 `;
 
 const DetailsRight = styled.div`
@@ -30,6 +37,9 @@ const DetailsRight = styled.div`
   align-self: flex-end;
   color: #fff;
   height: 100%;
+  @media (max-width: 52.75em) {
+    padding: 0;
+  }
 `;
 
 const DetailsLeft = styled.div`
