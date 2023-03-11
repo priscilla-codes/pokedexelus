@@ -14,6 +14,9 @@ const Container = styled.div`
   align-items: center;
   height: 100%;
   background-color: white;
+  @media (max-width: 52.75em) {
+    padding: 0 1rem;
+  }
 `;
 
 function App() {
