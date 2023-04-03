@@ -41,6 +41,10 @@ const FavoritesLink = styled(Link)`
     padding-right: 0.5rem;
     color: #ed1b24;
   }
+  @media (max-width: 52.75em) {
+    padding: 0.5rem .5rem;
+    font-size: .9rem;
+  }
 `;
 
 const SearchPage = () => {
@@ -56,7 +60,7 @@ const SearchPage = () => {
   return (
     <>
       <Logo to="/">
-        <LogoImage src={logoImage} />
+        <LogoImage src={logoImage} logo="search" />
         <span>Pokedexelus</span>
       </Logo>
       <SearchBox />

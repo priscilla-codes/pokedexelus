@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   margin-top: 15rem;
   @media (max-width: 52.75em) {
     width: 100%;
+    margin-top: 6rem;
   }
 `;
 
