@@ -9,6 +9,10 @@ export const Logo = styled(Link)`
   font-size: ${props => (props.logo === 'home' ? '3.2rem' : '2rem')};
   text-decoration: none;
   color: #000;
+
+  @media (max-width: 52.75em) {
+    font-size: ${props => (props.logo === 'home' ? '2.5rem' : '1.6rem')};
+  }
 `;
 
 export const LogoImage = styled.img`
