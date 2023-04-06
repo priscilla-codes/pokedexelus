@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Pokedexelus
+Pokedexelus is a web application that allows users to search for pokemon, view information about specific pokemon, and add pokemon to their favorites list.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![pokedexelus-preview](https://user-images.githubusercontent.com/10909592/230026147-33997c38-b286-45d3-8a39-4f4cece21270.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Getting Started
+```bash
+# Clone the repository 
+git clone https://github.com/priscilla-codes/pokedexelus.git
 
-### `npm start`
+# Install the required dependencies
+npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Start the application 
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+### Home Page
+The home page displays a search box where users can enter the name of a pokemon to search for. Users can also click on the "Favorites" link to view their favorite pokemon.
 
-### `npm test`
+### Search Results
+After entering a search query, the search results page will display a list of pokemon matching the search query. Users can click on a pokemon to view more information about it.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pokemon Details
+The pokemon details page displays detailed information about a specific pokemon, including its name, height, weight, and experience. Users can also add the pokemon to their favorites list by clicking the heart icon.
 
-### `npm run build`
+### Favorites
+The favorites page displays a list of the user's favorite pokemon. Users can click on a pokemon to view its details or remove it from their favorites list.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technical Details
+- Pokedexelus is built using React.js and the [PokeAPI](https://pokeapi.co/) . 
+- The app is divided into several components, each responsible for a specific part of the UI. 
+- Styling is done using styled components. 
+- The app uses React Router for navigation between pages. 
+- Data is fetched from the [PokeAPI](https://pokeapi.co/) using [Axios](https://github.com/axios/axios).
